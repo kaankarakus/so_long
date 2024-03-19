@@ -10,10 +10,11 @@ LIBFT_PATH = lib/libft
 LIBFT	= libft.a
 FT_PRINTF_PATH = lib/ft_printf
 FT_PRINTF = libftprint.a
-SRCS = so_long.c utils/map.c utils/map_check.c utils/game_check.c lib/get_next_line_utils.c lib/get_next_line.c
+SRCS = so_long.c utils/render_map.c utils/move.c utils/map.c utils/map_check.c utils/game_check.c lib/get_next_line_utils.c lib/get_next_line.c
 OBJS=$(SRCS:.c=.o)
 
-all: $(MLX) $(LIBFT) $(FT_PRINTF) $(NAME)
+alll.out: $(MLX) $(LIBFT) $(FT_PRINTF) $(NAME) clean
+	clear
 
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -L $(LIBFT_PATH) -L $(FT_PRINTF_PATH) -lft -lftprintf $(LIBRARY) -o $(NAME)

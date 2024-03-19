@@ -6,7 +6,7 @@
 /*   By: kkarakus <kkarakus@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:47:55 by kkarakus          #+#    #+#             */
-/*   Updated: 2024/03/12 16:42:51 by kkarakus         ###   ########.fr       */
+/*   Updated: 2024/03/19 16:29:44 by kkarakus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,11 @@
 # define KEY_DOWN 125
 # define KEY_UP 126
 
+# define DIR_LEFT 	4
+# define DIR_RIGHT 	6
+# define DIR_UP 	8
+# define DIR_DOWN 	2
+
 typedef struct s_player
 {
 	int	x;
@@ -60,6 +65,15 @@ typedef struct s_exit
 	int	x;
 	int	y;
 }	t_exit;
+
+typedef struct s_imgs
+{
+	void	*c;
+	void	*e;
+	void	*f;
+	void	*p;
+	void	*w;
+}	t_imgs;
 
 typedef struct s_game
 {
@@ -86,26 +100,23 @@ typedef struct s_count
 	int	player;
 }	t_count;
 
-typedef struct s_imgs
-{
-	void	*c;
-	void	*e;
-	void	*f;
-	void	*p;
-	void	*w;
-}			t_imgs;
+int			character_checker(t_game *game);
+int			check_character_count(t_game *game);
+int			check_game(t_game *game);
+int			check_map_extensions(char *file);
+int			check_map_wall(t_game *game);
+int			ft_exit_game(t_game *game);
+int			ft_init_images(t_game *game);
+int			ft_key_hook(int key, t_game *game);
+int			get_map(char *file, t_game *game);
+int			map(char *file, t_game **game);
+int			player_location(t_game *game, t_count character);
 
-int		character_checker(t_game *game);
-int		check_character_count(t_game *game);
-int		check_game(t_game *game);
-int		check_map_extensions(char *file);
-int		check_map_wall(t_game *game);
-int		get_map(char *file, t_game *game);
-int		map(char *file, t_game **game);
-int		player_location(t_game *game, t_count character);
-
-void	ft_fill_flood(int x, int y, t_game *game);
-void	free_map(t_game *game);
-void	init_game(t_game *game);
+void		free_map(t_game *game);
+void		ft_fill_flood(int x, int y, t_game *game);
+void		ft_put_images(t_game *game);
+void		ft_write_score(t_game *game);
+void		init_game(t_game *game);
+void		render_map(t_game *game);
 
 #endif

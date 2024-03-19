@@ -6,7 +6,7 @@
 /*   By: kkarakus <kkarakus@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:37:43 by kkarakus          #+#    #+#             */
-/*   Updated: 2024/03/12 16:18:48 by kkarakus         ###   ########.fr       */
+/*   Updated: 2024/03/19 15:45:18 by kkarakus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,19 @@ int	check_game(t_game *game)
 		i++;
 	}
 	return (SUCCESS);
+}
+
+int	ft_exit_game(t_game *game)
+{
+	mlx_destroy_window(game->mlx, game->win);
+	free_map(game);
+	return (0);
+}
+
+void	init_game(t_game *game)
+{
+	game->item = 0;
+	game->map_height = 0;
+	game->map_width = 0;
+	game->map = NULL;
 }

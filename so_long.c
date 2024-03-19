@@ -6,13 +6,18 @@
 /*   By: kkarakus <kkarakus@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:53:42 by kkarakus          #+#    #+#             */
-/*   Updated: 2024/03/12 16:25:52 by kkarakus         ###   ########.fr       */
+/*   Updated: 2024/03/19 16:50:31 by kkarakus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "headers/so_long.h"
-// void	*floor = mlx_xpm_file_to_image(mlx, "images/floor.xpm", &a, &b);
-// mlx_put_image_to_window(mlx, win, floor, x.a, y.b);
+
+static void	ft_window(t_game *game)
+{
+	mlx_key_hook(game->win, ft_key_hook, game);
+	mlx_hook(game->win, BTN_EXIT, 0, ft_exit_game, game);
+	mlx_loop(game->mlx);
+}
 
 int	main(int ac, char **av)
 {
@@ -24,8 +29,13 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		return (ft_printf("Check to parameters!\n"), ERROR);
 	map(av[1], &game);
-	while (i < game->map_height)
-		ft_printf("%s\n", game->map[i++]);
+	if (game->map_height > 20 || game->map_width > 40)
+	{
+		ft_printf("The map size is so big!");
+		free_map(game);
+	}
+	render_map(game);
+	ft_window(game);
 	free_map(game);
 	free(game);
 	return (0);
