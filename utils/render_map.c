@@ -6,7 +6,7 @@
 /*   By: kkarakus <kkarakus@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 14:30:26 by kkarakus          #+#    #+#             */
-/*   Updated: 2024/03/19 14:21:39 by kkarakus         ###   ########.fr       */
+/*   Updated: 2024/03/20 13:08:52 by kkarakus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	render_map(t_game *game)
 		free_map(game);
 		exit(0);
 	}
-	ft_init_images(game);
+	if (ft_init_images(game) != SUCCESS)
+		free_map(game);
 	ft_put_images(game);
 }
 

@@ -6,7 +6,7 @@
 /*   By: kkarakus <kkarakus@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 11:47:18 by kkarakus          #+#    #+#             */
-/*   Updated: 2024/03/19 15:05:57 by kkarakus         ###   ########.fr       */
+/*   Updated: 2024/03/20 13:15:24 by kkarakus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ int	player_location(t_game *game, t_count character)
 {
 	while (character.i < game->map_height)
 	{
-		character.j = 0;
-		while (character.j < game->map_width)
+		character.j = -1;
+		while (++character.j < game->map_width)
 		{
 			if (game->map[character.i][character.j] == 'C')
 				game->item++;
@@ -84,7 +84,6 @@ int	player_location(t_game *game, t_count character)
 				game->exit.x = character.j;
 				game->exit.y = character.i;
 			}
-			character.j++;
 		}
 		character.i++;
 	}

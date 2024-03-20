@@ -6,7 +6,7 @@
 /*   By: kkarakus <kkarakus@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:53:42 by kkarakus          #+#    #+#             */
-/*   Updated: 2024/03/19 16:50:31 by kkarakus         ###   ########.fr       */
+/*   Updated: 2024/03/20 13:11:46 by kkarakus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int	main(int ac, char **av)
 	i = 0;
 	if (ac != 2)
 		return (ft_printf("Check to parameters!\n"), ERROR);
-	map(av[1], &game);
+	if (map(av[1], &game) != SUCCESS)
+		return (ERROR);
 	if (game->map_height > 20 || game->map_width > 40)
 	{
 		ft_printf("The map size is so big!");

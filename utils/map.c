@@ -6,7 +6,7 @@
 /*   By: kkarakus <kkarakus@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 14:38:36 by kkarakus          #+#    #+#             */
-/*   Updated: 2024/03/19 16:25:33 by kkarakus         ###   ########.fr       */
+/*   Updated: 2024/03/20 13:02:41 by kkarakus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,15 +85,16 @@ int	map(char *file, t_game **game)
 
 	i = 0;
 	j = 0;
-	check_map_extensions(file);
+	if (check_map_extensions(file) != SUCCESS)
+		return (ERROR);
 	*game = malloc(sizeof(t_game));
 	if (!(*game))
 		return (ft_printf("game cannot be allocated"), ERROR);
 	init_game(*game);
-	get_map(file, *game);
-	check_map_wall(*game);
-	character_checker(*game);
-	check_character_count(*game);
-	check_game(*game);
+	if (get_map(file, *game) != SUCCESS || check_map_wall(*game) != SUCCESS
+		|| character_checker(*game) != SUCCESS
+		|| check_character_count(*game) != SUCCESS
+		|| check_game(*game) != SUCCESS)
+		return (ERROR);
 	return (SUCCESS);
 }

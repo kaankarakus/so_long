@@ -6,7 +6,7 @@
 /*   By: kkarakus <kkarakus@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:34:33 by kkarakus          #+#    #+#             */
-/*   Updated: 2024/03/19 16:54:32 by kkarakus         ###   ########.fr       */
+/*   Updated: 2024/03/20 13:05:25 by kkarakus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ static void	ft_move(t_game *game, int direction)
 	if (!ft_check_move(game, direction))
 		return ;
 	if (game->player.x == game->exit.x
-	 	&& game->player.y == game->exit.y)
-	game->map[game->player.y][game->player.x] = EXIT;
+		&& game->player.y == game->exit.y)
+		game->map[game->player.y][game->player.x] = EXIT;
 	else
 		game->map[game->player.y][game->player.x] = FLOOR;
 	if (direction == DIR_RIGHT)
