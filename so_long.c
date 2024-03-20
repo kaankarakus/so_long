@@ -40,8 +40,3 @@ int	main(int ac, char **av)
 	free(game);
 	return (0);
 }
-
-// __attribute__((destructor))
-// static void test() {
-// 	system("leaks so_long");
-// }
