@@ -40,7 +40,7 @@ int	check_game(t_game *game)
 		{
 			if (i != '\0')
 			{
-				if (game->map_copy[i][j] != WALL && game->map_copy[i][j] != 'F')
+				if (game->map_copy[i][j] != WALL && game->map_copy[i][j] != 'F' && game->map_copy[i][j] != FLOOR)
 					return (ft_printf("The map layout is not OK for playing."),
 						free_map(game), ERROR);
 			}
